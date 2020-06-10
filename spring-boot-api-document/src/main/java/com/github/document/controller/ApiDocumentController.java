@@ -23,8 +23,8 @@ public class ApiDocumentController {
 	/**
 	 * 获取数据
 	 * 
-	 * @param account
-	 * @param password
+	 * @param account login_account
+	 * @param password login_password
 	 * @return code 1000 成功 1001 文档关闭 2001 登录失败 3001 账号或密码为空
 	 * 
 	 */

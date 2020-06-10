@@ -8,12 +8,6 @@ import java.lang.annotation.Target;
 
 /**
  * Controller 说明
- * 
- * @ClassName: ParamApiController
- * @Description: TODO(描述 Controller)
- * @author DDM
- * @date 2019年11月22日 上午10:29:08
- *
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
@@ -22,33 +16,25 @@ public @interface ApiController {
 
 	/**
 	 * 类名称
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @return
+	 * @return 名称
 	 */
 	public String value();
 
 	/**
 	 * 描述说明
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @return
+	 * @return 描述
 	 */
 	public String describe() default "";
 
 	/**
 	 * 作者
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @return
+	 * @return 作者
 	 */
 	public String author() default "";
 
 	/**
 	 * 版本,默认 V1.0
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @return
+	 * @return 版本
 	 */
 	public String version() default "V1.0";
 

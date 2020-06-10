@@ -144,10 +144,8 @@ public class MethodFieldUtil {
 
 	/**
 	 * 判断是不是数组或集合类型
-	 * 
-	 * @author DDM 2019年11月28日
-	 * @param cla
-	 * @return
+	 * @param cla 对象
+	 * @return 结果
 	 */
 	public static boolean checkIsArray(Class<?> cla) {
 
@@ -168,7 +166,7 @@ public class MethodFieldUtil {
 		return false;
 	}
 
-	public static KVEntity<Class<?>, Type> extractMyClass(Class<?> cla, Type type) {
+	private static KVEntity<Class<?>, Type> extractMyClass(Class<?> cla, Type type) {
 		// Class<?> cla2 = cla;
 
 		KVEntity<Class<?>, Type> kv = new KVEntity<>();
@@ -357,11 +355,10 @@ public class MethodFieldUtil {
 
 	/**
 	 * 判断是否重复
-	 * 
-	 * @author DDM 2019年11月28日
-	 * @param vos
-	 * @param vo
-	 * @return
+	 * @param vos 集合数据
+	 * @param vo 查询对象
+	 * @param <T> 具体数据
+	 * @return 处理后的数据
 	 */
 	public static <T extends ParamBaseVo> boolean isDuplicate(List<T> vos, ParamBaseVo vo) {
 		if (null != vos && vos.size() > 0 && null != vo) {
@@ -377,12 +374,10 @@ public class MethodFieldUtil {
 
 	/**
 	 * 提取方法的JSON的类型
-	 * 
-	 * @author DDM 2019年11月28日
-	 * @param method
-	 * @param index
-	 * @param params
-	 * @return
+	 * @param method 方法
+	 * @param index 索引
+	 * @param params 注解
+	 * @return 参数结果
 	 */
 	private static List<ParameterVo> extractMothodParamerByRequestBody(Method method, Integer index,
 			ApiParam[] params) {
@@ -429,7 +424,7 @@ public class MethodFieldUtil {
 		return vos.size() == 0 ? null : vos;
 	}
 
-	public static void replaceRaramerField(ApiParam param, ParameterVo vo) {
+	private static void replaceRaramerField(ApiParam param, ParameterVo vo) {
 		String[] fields = param.field().split("\\.");
 		ParameterVo vo2 = vo;
 
@@ -467,9 +462,9 @@ public class MethodFieldUtil {
 
 	/**
 	 * 提取方法上的返回值
-	 * 
-	 * @param method
-	 * @return
+	 * @param method 方法
+	 * @param params 参数
+	 * @return 返回值类型
 	 */
 	public static List<ResponseVo> extractMothodReturnField(Method method, ApiResponseParam[] params) {
 
@@ -638,15 +633,16 @@ public class MethodFieldUtil {
 
 	/**
 	 * 提取 param 属性
-	 * 
-	 * @author DDM 2019年11月26日
-	 * @param t
-	 * @param vo
-	 * @param cla
-	 * @param genType
-	 * @param checkType
-	 * @param array
+	 * @param t 类型
+	 * @param vo 返回对象
+	 * @param cla 对象
+	 * @param genType 上级类型
+	 * @param checkType 检查类型
+	 * @param array 是否是集合
+	 * @param count 第几次
+	 * @param <T> 数据类型
 	 */
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private static <T extends ParamChildrenVo> void extractParamByGenType(T t, T vo, Class<?> cla, Type genType,
 			int checkType, boolean array, int count) {
@@ -701,11 +697,10 @@ public class MethodFieldUtil {
 
 	/**
 	 * 检查类型
-	 * 
-	 * @author DDM 2019年11月25日
-	 * @param type
-	 * @param genType
-	 * @return
+	 * @param type 类型
+	 * @param genType 上级类型
+	 * @param array 是否是集合
+	 * @return 类型详情
 	 */
 	public static FieldTypeInfo checkType(Type type, Type genType, Boolean array) {
 
@@ -789,10 +784,10 @@ public class MethodFieldUtil {
 
 	/**
 	 * 查询指定泛型
-	 * 
-	 * @param type
-	 * @param genType
-	 * @return
+	 * @param type 类型
+	 * @param pt 反射类型
+	 * @param genType 上级类型
+	 * @return 查询结果
 	 */
 	public static KVEntity<Class<?>, Type> extractGenType(Type type, ParameterizedType pt, Type genType) {
 
@@ -871,11 +866,9 @@ public class MethodFieldUtil {
 
 	/**
 	 * 提取类型
-	 * 
-	 * @author DDM 2019年11月25日
-	 * @param type
-	 * @param ct
-	 * @return
+	 * @param type 类型
+	 * @param ct 对象
+	 * @return 对象类型
 	 */
 	public static Class<?> extractClassByType(Type type, FieldType ct) {
 		KVEntity<Class<?>, Type> kv = new KVEntity<>();
@@ -915,10 +908,8 @@ public class MethodFieldUtil {
 
 	/**
 	 * 判断是不是泛型
-	 * 
-	 * @author DDM 2019年11月25日
-	 * @param ct
-	 * @return true 是 false 不是 null 泛型指定
+	 * @param ct 类型
+	 * @return true 是
 	 */
 	public static Boolean isGeneric(FieldType ct) {
 		switch (ct) {
@@ -935,10 +926,8 @@ public class MethodFieldUtil {
 
 	/**
 	 * 判断类型,不考虑二维数组
-	 * 
-	 * @author DDM 2019年11月25日
-	 * @param type
-	 * @return
+	 * @param type 对象
+	 * @return 数据类型
 	 */
 	public static FieldType checkFieldType(Type type) {
 
@@ -973,10 +962,8 @@ public class MethodFieldUtil {
 
 	/**
 	 * 判断是不是不可反射的基本类型
-	 * 
-	 * @param method
-	 * @param cla
-	 * @return
+	 * @param cla 对象
+	 * @return null 不可映射
 	 */
 	private static Class<?> checkParamTypeIsNotKey(Class<?> cla) {
 		if (checkTypeIsBaseOrString(cla) != -1) {
@@ -998,10 +985,8 @@ public class MethodFieldUtil {
 
 	/**
 	 * 判断对象是不是基本数据类型或String
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @param cla
-	 * @return -1-> 不是基本数据类型 0->布尔 1->Integer 2->Double 3->Number 4->String 5->Enum
+	 * @param cla 对象
+	 * @return 0 布尔 1 int 2 double 3 其他类型数据 4 字符串 5 枚举 -1 识别异常
 	 */
 	public static int checkTypeIsBaseOrString(Class<?> cla) {
 		// 判断是不是布尔
@@ -1035,11 +1020,10 @@ public class MethodFieldUtil {
 
 	/**
 	 * 检查是否重复
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @param vos
-	 * @param field
-	 * @return
+	 * @param vos 集合数据
+	 * @param field 字段
+	 * @param <T> 数据类型
+	 * @return 处理后的数据
 	 */
 	public static <T extends ParamChildrenVo<?>> boolean checkFieldRepeat(List<T> vos, String field) {
 		if (null != vos) {
@@ -1055,11 +1039,10 @@ public class MethodFieldUtil {
 
 	/**
 	 * 从集合中提取
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @param vos
-	 * @param field
-	 * @return
+	 * @param vos 集合数据
+	 * @param field 字段
+	 * @param <T> 数据类型
+	 * @return 处理结果
 	 */
 	public static <T extends ParamBaseVo> T extractFieldByList(List<T> vos, String field) {
 		if (null != vos) {
@@ -1074,10 +1057,8 @@ public class MethodFieldUtil {
 
 	/**
 	 * 判断是否为空
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @param str
-	 * @return
+	 * @param str 字符串
+	 * @return 处理结果
 	 */
 	public static boolean isEmpty(String str) {
 		return null == str ? true : "".equals(str.trim()) ? true : false;

@@ -37,10 +37,9 @@ public class ScanControllerUtil {
 
 	/**
 	 * 搜索，扫描 Controller
-	 * 
-	 * @author DDM 2019年11月26日
-	 * @param packagePath
-	 * @return
+	 * @param packagePath 包路径
+	 * @param base_path 基本路径
+	 * @return 处理结果
 	 */
 	public static List<ControllerVo> scan(String packagePath, String base_path) {
 		/**
@@ -140,8 +139,6 @@ public class ScanControllerUtil {
 
 	/**
 	 * 提取返回值信息
-	 * 
-	 * @author DDM 2019年11月26日
 	 * @param method
 	 * @param ivo
 	 * @return
@@ -169,10 +166,9 @@ public class ScanControllerUtil {
 
 	/**
 	 * 删除指定属性
-	 * 
-	 * @author DDM 2019年11月23日
-	 * @param vos
-	 * @param field
+	 * @param vos list
+	 * @param field filed
+	 * @param <T> 删除后的数据
 	 */
 	public static <T extends ParamChildrenVo<?>> void removeField(List<T> vos, String field) {
 		if (null != vos && vos.size() > 0) {
@@ -191,9 +187,6 @@ public class ScanControllerUtil {
 
 	/**
 	 * 提取方法上的请求头信息
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @param ivo
 	 * @param headVos
 	 * @param method
 	 * @return
@@ -222,7 +215,6 @@ public class ScanControllerUtil {
 
 	/**
 	 * 提取类上面的请求头信息
-	 * 
 	 * @param cla
 	 * @return
 	 */
@@ -267,9 +259,7 @@ public class ScanControllerUtil {
 
 	/**
 	 * 提取方法上面请求头信息
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @param cla
+	 * @param method
 	 * @return
 	 */
 	private static List<HeadVo> extractHeaderInfo(Method method) {
@@ -314,11 +304,8 @@ public class ScanControllerUtil {
 
 	/**
 	 * 提取 Controller 上的信息
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @param cvo
-	 * @param methodType
 	 * @param cla
+	 * @param base_path
 	 * @return
 	 */
 	private static ControllerVo extractControllerInfo(Class<?> cla, String base_path) {
@@ -394,11 +381,7 @@ public class ScanControllerUtil {
 
 	/**
 	 * 提取方法上的信息及请求参数属性信息
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @param ivo
 	 * @param methodType
-	 * @param jsonType
 	 * @param method
 	 * @return
 	 */

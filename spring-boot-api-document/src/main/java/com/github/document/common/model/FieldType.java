@@ -1,15 +1,15 @@
 package com.github.document.common.model;
 
 public enum FieldType {
-	/**
+	/*
 	 * 不是泛型，纯 Class
 	 */
 	Clazz(1000),
-	/**
+	/*
 	 * 不是泛型，纯数组 Class[]
 	 */
 	ArrayClass(1001),
-	/**
+	/*
 	 * 泛型：Class<T>
 	 */
 	ClassT(1002),
@@ -17,11 +17,11 @@ public enum FieldType {
 	 * Class<T>[]
 	 */
 	ArrayClassT(1003),
-	/**
+	/*
 	 * 未确定泛型：T
 	 */
 	T(1004),
-	/**
+	/*
 	 * 纯泛型数组：T
 	 */
 	ArrayT(1005);

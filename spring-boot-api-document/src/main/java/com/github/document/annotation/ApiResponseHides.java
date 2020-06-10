@@ -7,11 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @ClassName: ApiResponse
- * @Description: TODO(用于隐藏返回值字段)
- * @author DDM
- * @date 2019年11月22日 上午10:52:19
- *
+ * 需要隐藏的参数
  */
 
 @Documented
@@ -20,8 +16,6 @@ import java.lang.annotation.Target;
 public @interface ApiResponseHides {
 	/**
 	 * 需要隐藏的字段
-	 * 
-	 * @author DDM 2019年11月23日
 	 * @return
 	 */
 	String[] value() default {};

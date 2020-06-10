@@ -2,12 +2,6 @@ package com.github.document.common.exception;
 
 /**
  * 字段校验异常
- * 
- * @ClassName: FieldCheckException
- * @Description: TODO(这里用一句话描述这个类的作用)
- * @author DDM
- * @date 2019年11月22日 上午10:22:35
- *
  */
 @SuppressWarnings("serial")
 public class ParamCheckException extends RuntimeException {

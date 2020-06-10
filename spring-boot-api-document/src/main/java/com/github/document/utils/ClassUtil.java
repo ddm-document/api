@@ -14,17 +14,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /**
- * 扫描2包下的所有类
- * <p>
- * Title: ClassUtil.java
- * </p>
- * <p>
- * Description:
- * </p>
- * 
- * @author lichao1
- * @date 2018年12月3日
- * @version 1.0
+ * 扫描包下面的类
  */
 public class ClassUtil {
 
@@ -35,9 +25,8 @@ public class ClassUtil {
 
 	/**
 	 * 从包package中获取所有的Class
-	 * 
-	 * @param pack
-	 * @return
+	 * @param pack 包路径
+	 * @return 类集合
 	 */
 	public static Set<Class<?>> getClasses(String pack) {
 
@@ -127,11 +116,10 @@ public class ClassUtil {
 
 	/**
 	 * 以文件的形式来获取包下的所有Class
-	 * 
-	 * @param packageName
-	 * @param packagePath
-	 * @param recursive
-	 * @param classes
+	 * @param packageName 包名称
+	 * @param packagePath 包路径
+	 * @param recursive 递归
+	 * @param classes 集合
 	 */
 	public static void findAndAddClassesInPackageByFile(String packageName, String packagePath, final boolean recursive,
 			Set<Class<?>> classes) {
@@ -143,14 +131,14 @@ public class ClassUtil {
 			return;
 		}
 		// 如果存在 就获取包下的所有文件 包括目录
-		File[] dirfiles = dir.listFiles(new FileFilter() {
+		File[] dirFiles = dir.listFiles(new FileFilter() {
 			// 自定义过滤规则 如果可以循环(包含子目录) 或则是以.class结尾的文件(编译好的java类文件)
 			public boolean accept(File file) {
 				return (recursive && file.isDirectory()) || (file.getName().endsWith(".class"));
 			}
 		});
 		// 循环所有文件
-		for (File file : dirfiles) {
+		for (File file : dirFiles) {
 			// 如果是目录 则继续扫描
 			if (file.isDirectory()) {
 				findAndAddClassesInPackageByFile(packageName + "." + file.getName(), file.getAbsolutePath(), recursive,
@@ -173,12 +161,12 @@ public class ClassUtil {
 		}
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		System.out.println(classList);
 		Object[] ts = classList.toArray();
 		for (Object t : ts) {
 			Class<?> tt = (Class<?>) t;
 			System.out.println(tt.getName());
 		}
-	}
+	}*/
 }

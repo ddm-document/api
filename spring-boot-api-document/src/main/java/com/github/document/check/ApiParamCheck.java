@@ -33,9 +33,9 @@ public class ApiParamCheck {
 	 * 全局校验
 	 * 
 	 * @author DDM 2019年11月27日
-	 * @param jp
-	 * @param check
-	 * @throws Exception
+	 * @param jp 参数对象
+	 * @param apiParams 注解
+	 * @throws Exception 异常信息
 	 */
 	@Before("execution(public * *(..)) && @annotation(apiParams)")
 	public void checkParam(JoinPoint jp, ApiParams apiParams) throws Exception {
@@ -245,11 +245,10 @@ public class ApiParamCheck {
 
 	/**
 	 * 检查类型
-	 * 
-	 * @author DDM 2019年11月27日
-	 * @param obj
+	 * @param obj 对象
 	 * @return 1 Object 2 Number Or String 3 Array 4 List 5 Set 6 自定义
 	 */
+
 	public static int checkParamType(Object obj) {
 		// 判断是不是基本类型或 String类型
 		if (obj.getClass().getTypeName().equals(Object.class.getTypeName())) {

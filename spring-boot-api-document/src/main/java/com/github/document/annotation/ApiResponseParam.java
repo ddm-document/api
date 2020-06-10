@@ -7,13 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 只能用在 @ApiResponses 注解中
- * 
- * @ClassName: ApiResponseParam
- * @Description: TODO(描述返回值字段)
- * @author DDM
- * @date 2019年11月29日 上午9:29:48
- *
+ * 只能用在 @ApiResponses 注解中，用于描述 返回值 字段
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
@@ -21,25 +15,19 @@ import java.lang.annotation.Target;
 public @interface ApiResponseParam {
 	/**
 	 * 字段，多层请用点， 如 a.b
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @return
+	 * @return 字段
 	 */
 	public String field();
 
 	/**
 	 * 是否必须，默认 否
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @return
+	 * @return false
 	 */
 	public boolean required() default false;
 
 	/**
 	 * 示例说明
-	 * 
-	 * @author DDM 2019年11月22日
-	 * @return
+	 * @return 描述
 	 */
 	public String describe() default "";
 }
