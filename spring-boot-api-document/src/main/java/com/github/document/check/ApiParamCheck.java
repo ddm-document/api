@@ -297,6 +297,16 @@ public class ApiParamCheck {
 
 	private static void takenJsonValue(JSONObject json, String[] keys, int index, ApiParam param) {
 		System.out.println("校验：" + param.field() + " key:" + keys[index]);
+
+		if(!json.containsKey(keys[index]) || null == json.get(keys[index])){
+			if(param.required()){
+				throw new ParamCheckException(param.field(), ParamCheckError.EMPTY, param.describe(),
+						"不能为空");
+			}
+			return;
+		}
+
+
 		if (index + 1 < keys.length) {
 			// key 不存在，跳过
 			if (!json.containsKey(keys[index])) {
