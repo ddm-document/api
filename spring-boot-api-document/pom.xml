@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>com.github</groupId>
 		<artifactId>spring_boot_document_master</artifactId>
-		<version>0.0.1</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.github.ddm-document</groupId>
 	<artifactId>spring-boot-api-document</artifactId>
-	<version>1.0.3-SNAPSHOT</version>
+	<version>1.0.4</version>
 	<packaging>jar</packaging>
 
 

@@ -77,6 +77,15 @@ public class ApiParamCheck {
 		if (isJson && index != null) {
 			// 是JSON, 取出第一个参数
 			Object param = jp.getArgs()[index];
+			if(null == param){
+				for (ApiParam ap: apiParams.value()) {
+					if(ap.required() == true){
+						throw new ParamCheckException(ap.field(), ParamCheckError.EMPTY, ap.describe(), "不能为空");
+					}
+				}
+				return;
+			}
+
 			// 校验
 			checkByJson(param, params);
 		} else {
@@ -104,9 +113,10 @@ public class ApiParamCheck {
 		ApiParam apiParam = null;
 		if (null == param) {
 			apiParam = getParam(apiParams, name);
-			if (apiParam.required()) {
+			if ( apiParam.required()) {
 				throw new ParamCheckException(apiParam.field(), ParamCheckError.EMPTY, apiParam.describe(), "不能为空");
 			}
+			return;
 		}
 
 		Integer checkType = checkParamType(param);
